@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  padding: 30px;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+}
+
+dl dt {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+.text-report dt:after {
+  content: ": ";
+}
