@@ -1,20 +1,19 @@
 function doAnalysis(text) {
 
-  let textArray = parseText(text);
-  let wordBin = makeWordBin(textArray);
+  let textArray = parseText(text); // array of strings for each word
+  let wordBin = makeWordBin(textArray); // to count the use of each individual word
 
   function parseText(text) {
-    // get rid of new lines and carriage returns, and replace with white spaces.
+    // replace new lines and carriage returns with white spaces.
     let mod1 = text.replace(/[\n\r]/g," ").toLowerCase();
     // use regexp to get rid of all punctuation, then return array of words as strings
     return mod1.replace(/[\.:\-\(!\?_\$;}\),{]/g, "").split(" ");
   }
 
   function makeWordBin(arr) {
-    // declare empty object
+    // Create an object with each unique word and num times each word is used
     let wordBin = {};
     let uniqueWords = 0;
-    // for loop through array
     for (let i=0; i<arr.length; i++) {
       if (!wordBin.hasOwnProperty(arr[i])) {
         wordBin[arr[i]] = 1;
@@ -46,7 +45,7 @@ function doAnalysis(text) {
     return Math.round(chars / arr.length);
   }
 
-  return {
+  return { // each data point to display is organized as a prop in the returned object
     wordCount: textArray.length,
     uniqueCount: wordBin[1],
     avgWordLength: getAvgLength(textArray),
@@ -63,6 +62,7 @@ function renderData(res) {
   $(".js-text-report").removeClass("hidden");
 }
 
+// Event listener
 function getInputDoApp($btn, $userText){
   $btn.on("click", function(e) {
     let text = $userText.val();
